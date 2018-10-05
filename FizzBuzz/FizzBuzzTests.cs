@@ -10,22 +10,32 @@ namespace FizzBuzz
     [TestFixture]
     public class FizzBuzzTests
     {
-        [Test]
-        public void FizzFor3()
+        [TestCase(3)]
+        [TestCase(6)]
+        [TestCase(9)]
+        [TestCase(300)]
+        public void FizzForMultiplesOf3(int n)
         {
-            Assert.That(FizzBuzz.Say(3), Is.EqualTo("Fizz"));
+            Assert.That(FizzBuzz.Say(n), Is.EqualTo("Fizz"));
         }
 
-        [Test]
-        public void BuzzFor5()
+        [TestCase(5)]
+        [TestCase(10)]
+        [TestCase(25)]
+        [TestCase(50000)]
+        public void BuzzForMultiplesOf5(int n)
         {
-            Assert.That(FizzBuzz.Say(5), Is.EqualTo("Buzz"));
+            Assert.That(FizzBuzz.Say(n), Is.EqualTo("Buzz"));
         }
 
-        [Test]
-        public void SayTheNumberIfNotDivisibleBy3Or5()
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(7)]
+        [TestCase(11)]
+        [TestCase(13)]
+        public void SayTheNumberIfNotDivisibleBy3Or5(int n)
         {
-            Assert.That(FizzBuzz.Say(1), Is.EqualTo("1"));
+            Assert.That(FizzBuzz.Say(n), Is.EqualTo(n.ToString()));
         }
     }
 
@@ -33,12 +43,12 @@ namespace FizzBuzz
     {
         public static string Say(int n)
         {
-            if (n == 3)
+            if (n % 3 == 0)
             {
                 return "Fizz";
             }
 
-            if (n == 5)
+            if (n % 5 == 0)
             {
                 return "Buzz";
             }
