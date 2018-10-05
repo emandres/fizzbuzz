@@ -13,7 +13,7 @@ namespace FizzBuzz
         [TestCase(3)]
         [TestCase(6)]
         [TestCase(9)]
-        [TestCase(300)]
+        [TestCase(33)]
         public void FizzForMultiplesOf3(int n)
         {
             Assert.That(FizzBuzz.Say(n), Is.EqualTo("Fizz"));
@@ -26,6 +26,14 @@ namespace FizzBuzz
         public void BuzzForMultiplesOf5(int n)
         {
             Assert.That(FizzBuzz.Say(n), Is.EqualTo("Buzz"));
+        }
+
+        [TestCase(15)]
+        [TestCase(30)]
+        [TestCase(165000)]
+        public void FizzBuzzForMultiplesOf3And5(int n)
+        {
+            Assert.That(FizzBuzz.Say(n), Is.EqualTo("FizzBuzz"));
         }
 
         [TestCase(1)]
@@ -43,14 +51,19 @@ namespace FizzBuzz
     {
         public static string Say(int n)
         {
+            string result = string.Empty;
             if (n % 3 == 0)
             {
-                return "Fizz";
+                result += "Fizz";
             }
-
             if (n % 5 == 0)
             {
-                return "Buzz";
+                result += "Buzz";
+            }
+
+            if (result != string.Empty)
+            {
+                return result;
             }
 
             return n.ToString();
