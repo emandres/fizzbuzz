@@ -5,11 +5,11 @@
         public static string Say(int n)
         {
             string result = string.Empty;
-            if (n % 3 == 0)
+            if (IsFizz(n))
             {
                 result += "Fizz";
             }
-            if (n % 5 == 0)
+            if (IsBuzz(n))
             {
                 result += "Buzz";
             }
@@ -20,6 +20,16 @@
             }
 
             return n.ToString();
+        }
+
+        private static bool IsFizz(int n)
+        {
+            return n % 3 == 0 || n.ToString().Contains("3");
+        }
+
+        private static bool IsBuzz(int n)
+        {
+            return n % 5 == 0 || n.ToString().Contains("5");
         }
     }
 }

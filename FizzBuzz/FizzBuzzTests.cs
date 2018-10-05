@@ -19,11 +19,25 @@ namespace FizzBuzz
             Assert.That(FizzBuzz.Say(n), Is.EqualTo("Fizz"));
         }
 
+        [TestCase(13)]
+        [TestCase(43)]
+        public void FizzForNumbersThatContain3(int n)
+        {
+            Assert.That(FizzBuzz.Say(n), Is.EqualTo("Fizz"));
+        }
+
         [TestCase(5)]
         [TestCase(10)]
         [TestCase(25)]
         [TestCase(50000)]
         public void BuzzForMultiplesOf5(int n)
+        {
+            Assert.That(FizzBuzz.Say(n), Is.EqualTo("Buzz"));
+        }
+
+        [TestCase(59)]
+        [TestCase(256)]
+        public void BuzzForNumbersThatContain5(int n)
         {
             Assert.That(FizzBuzz.Say(n), Is.EqualTo("Buzz"));
         }
@@ -40,7 +54,7 @@ namespace FizzBuzz
         [TestCase(2)]
         [TestCase(7)]
         [TestCase(11)]
-        [TestCase(13)]
+        [TestCase(29)]
         public void SayTheNumberIfNotDivisibleBy3Or5(int n)
         {
             Assert.That(FizzBuzz.Say(n), Is.EqualTo(n.ToString()));
